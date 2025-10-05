@@ -1,0 +1,17 @@
+PASSWORD_REGEXP = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*(.)\1)(?=.*([\^\$\%\@\#\&\*\!\?]).*(?!\2)[\^\$\%\@\#\&\*\!\?])[a-zA-Z\d\^\$\%\@\#\&\*\!\?]{8,}$'
+
+COLOR_REGEXP = r'^((rgb\(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]),\s?(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]),\s?(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])|(\d|[1-9]\d|100)%,\s?(\d|[1-9]\d|100)%,\s?(\d|[1-9]\d|100)%)\))|(#([\da-fA-F]{3}|[\da-fA-F]{6}))|(hsl\((\d|[1-9]\d|[12]\d\d|3[0-5]\d|360),\s?(\d|[1-9]\d|100)%,\s?(\d|[1-9]\d|100)%\)))$'
+
+EXPRESSION_REGEXP = r'(?P<constant>\b(pi|e|sqrt2|ln2|ln10)\b)|(?P<function>\b(sinh|cosh|tanh|coth|sin|cos|tg|ctg|tan|cot|th|cth|ln|lg|log|exp|sqrt|cbrt|abs|sign)\b)|(?P<operator>[\^\*\/\-\+])|(?P<left_parenthesis>\()|(?P<right_parenthesis>\))|(?P<variable>\b[a-zA-Z_][a-zA-Z_\d]*\b)|(?P<number>\b(\d+\.\d+|\d+)\b)'
+
+DATES_REGEXP = r'^((0?[1-9]|[12]\d|3[01])(?P<sep1>[\.\/\-])(01|1|03|3|05|5|07|7|08|8|10|12)(?P=sep1)([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)(?P<sep2>[\.\/\-])(01|1|03|3|05|5|07|7|08|8|10|12)(?P=sep2)(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|30)(?P<sep3>[\.\/\-])(04|4|06|6|09|9|11)(?P=sep3)([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)(?P<sep4>[\.\/\-])(04|4|06|6|09|9|11)(?P=sep4)(0?[1-9]|[12]\d|30)|(0?[1-9]|[12]\d)(?P<sep5>[\.\/\-])(02|2)(?P=sep5)([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)(?P<sep6>[\.\/\-])(02|2)(?P=sep6)(0?[1-9]|[12]\d)|(0?[1-9]|[12]\d|3[01])\s(января|марта|мая|июля|августа|октября|декабря)\s([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|(0?[1-9]|[12]\d|30)\s(апреля|июня|сентября|ноября)\s([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|(0?[1-9]|[12]\d)\s(февраля)\s([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|(January|March|May|July|August|October|December|Jan|Mar|May|Jul|Aug|Oct|Dec)\s(0?[1-9]|[12]\d|3[01]),\s([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|(April|June|September|November|Apr|Jun|Sep|Nov)\s(0?[1-9]|[12]\d|30),\s([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|(February|Feb)\s(0?[1-9]|[12]\d),\s([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d)|([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d),\s(January|March|May|July|August|October|December|Jan|Mar|May|Jul|Aug|Oct|Dec)\s(0?[1-9]|[12]\d|3[01])|([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d),\s(April|June|September|November|Apr|Jun|Sep|Nov)\s(0?[1-9]|[12]\d|30)|([1-9]\d{3}|[1-9]\d{2}|[1-9]\d|\d),\s(February|Feb)\s(0?[1-9]|[12]\d))$'
+
+
+
+PARENTHESIS_REGEXP = r'^(?![\)\]\}])(?!.*[\(\[\{]$)(?!.*(\(\]|\(\}|\{\]|\{\)|\[\)|\[\}))[a-zA-Z\d\s\(\)\[\]\{\}]+$'
+
+SENTENCES_REGEXP = r'(?P<sentence>(([A-ZА-ЯЁ][^\.\!\?]*\:\s*\n*(\n*\s*\d+\.[^\.\n]*\;)(\n\d+\.[^\.\n]*(\;|\.))+)|([A-ZА-ЯЁ][^\.\!\?\:]*\:\s*\n)|((\d+\.\s+)?[A-ZА-ЯЁ][^\.\!\?]*(\.|\!+|\?+|\.{3}))|(\d\s*из\s10\s*)))'
+
+PERSONS_REGEXP = r'(?<![\.\?\!]\s)(?P<person>[A-ZА-ЯЁ][a-zа-яё]+(-[A-ZА-ЯЁ][a-zа-яё]+)?(\s[A-ZА-ЯЁ]\.\s?[A-ZА-ЯЁ]\.)?(\s[A-ZА-ЯЁ][a-zа-яё]+(-[A-ZА-ЯЁ][a-zа-яё]+)*)?)'
+
+SERIES_REGEXP = r'(<td><h1\s*class="level2"><a\s*class="all"\s*href="\/series\/\d+\/">\s*(?P<name>.+)\s*<\/a>)|(<td\sclass="news"><b>Эпизоды:<\/b><\/td>\s*\n*\s*<td>\s*\n*\s*<table.*>\s*\n*\s*<tr>\s*\n*\s*<td\s*class="news">\s*(?P<episodes_count>\d+)\s*<\/td>)|(<span.*>Эпизод\s*(?P<episode_number>\d+)\s*<\/span><br\/>\s*\n*\s*<h1.*><b>\s*(?P<episode_name>.+)\s*<\/b><\/h1>\s*\n*\s*(<span.*>\s*(?P<episode_original_name>.*)\s*<\/span>\s*)?<\/td>\s*\n*\s*(<td.*>\s*(?P<episode_date>\d\d?\s*[а-я]*\s*\d{4})\s*<\/td>)?)|(<td\s*class="news"\s*colspan="2".*><h1.*>\s*Сезон\s*(?P<season>\d+)\s*<\/h1>\s*((?P<season_year>\d{4}),)?\s*эпизодов:\s*(?P<season_episodes>\d+)\s*<\/td>)'
